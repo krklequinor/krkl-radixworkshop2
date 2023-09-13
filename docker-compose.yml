@@ -1,0 +1,9 @@
+services:
+  web-app:
+    build: ./frontend
+    ports:
+      - "8070:8070"
+      - "8060:8060"
+    environment:
+      - ASPNETCORE_URLS=http://*:8070;http://*:8060
+      - ASPNETCORE_ENVIRONMENT=Development

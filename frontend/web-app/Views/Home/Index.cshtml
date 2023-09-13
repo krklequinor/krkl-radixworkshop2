@@ -1,0 +1,31 @@
+﻿@model ItemViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Data items</h2>
+<form method="post" action="@Url.Action("ProcessDataItems", "Home")">
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>Items</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.Items.Count; i++)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" asp-for="Items[i].IsSelected" />
+                </td>
+                <td>
+                    <input asp-for="Items[i].Data" />
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <button type="submit">Process</button>
+    <input type="checkbox" asp-for="@Model.UseApiClient" /> with API client
+</form>

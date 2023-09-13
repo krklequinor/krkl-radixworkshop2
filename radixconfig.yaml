@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/equinor/radix-operator/release/json-schema/radixapplication.json
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: edc23-radix-workshop-2
+spec:
+  environments:
+    - name: dev
+      build:
+        from: main
+  components:
+    - name: web-app
+      src: ./frontend
+      ports:
+        - name: http
+          port: 8070
+      publicPort: http
+      variables:
+        ASPNETCORE_URLS: "http://*:8070"
+  jobs:
+    - name: task
+      src: jobs/task
+      schedulerPort: 8071
+      payload: 
+        path: /app/input
+      variables: 
+        LOG_LEVEL: "DEBUG"

@@ -1,0 +1,33 @@
+@model List<web_app.Controllers.BatchStatus>
+@{
+    ViewData["Title"] = "Task statuses";
+}
+
+<h2>Task statuses</h2>
+<div class="table-responsive">  
+    <table class="table table-bordered table-condensed table-striped table-hover">  
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Batch Name</td>
+            <td>Created</td>
+            <td>Finished</td>
+            <td>State</td>
+            <td>Message</td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var batchStatus in Model)
+        {
+            <tr>
+                <td>@batchStatus.Name</td>
+                <td>@batchStatus.BatchName</td>
+                <td>@batchStatus.Created</td>
+                <td>@batchStatus.Ended</td>
+                <td>@batchStatus.Status</td>
+                <td>@batchStatus.Message</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
