@@ -2,7 +2,7 @@
 apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 metadata:
-  name: edc23-radix-workshop-2
+  name: krkl-radixworkshop2
 spec:
   environments:
     - name: dev
